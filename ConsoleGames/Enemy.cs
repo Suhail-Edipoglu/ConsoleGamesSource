@@ -46,7 +46,7 @@ namespace ConsoleGames
             }
         }
 
-        public void MoveRandomly()
+        public void MoveRandomly(Board board)
         {
             Random random = new Random();
             int randomNumber = random.Next(0, 4);
@@ -54,16 +54,28 @@ namespace ConsoleGames
             switch (randomNumber)
             {
                 case 0:
-                    x++;
+                    if (board.CheckIfFree('w', this.x, this.y))
+                    {
+                        x--;
+                    }
                     break;
                 case 1:
-                    x--;
+                    if (board.CheckIfFree('s', this.x, this.y))
+                    {
+                        x++;
+                    }
                     break;
                 case 2:
-                    y++;
+                    if (board.CheckIfFree('d', this.x, this.y))
+                    {
+                        y++;
+                    }
                     break;
                 case 3:
-                    y--;
+                    if (board.CheckIfFree('a', this.x, this.y))
+                    {
+                        y--;
+                    }
                     break;
                 default:
                     break;
