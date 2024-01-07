@@ -10,6 +10,7 @@ namespace ConsoleGameMenu
         static void Main(string[] args)
         {
             Console.Title = "First Game";
+            /*
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             if (args == null || args.Length == 0)
                 Console.SetWindowPosition(0, 0);
@@ -20,22 +21,50 @@ namespace ConsoleGameMenu
                 Console.SetWindowPosition(xPos, yPos);
             }
             Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            */
 
             //int x = Console.WindowWidth * Console.WindowHeight;
             // read int from console
-            int x = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            PrintNumbers(x); //158 47 7426 //211 50 10550
-            HideCursor();Console.ReadLine();
-            //Game game = new Game();
-            //game.Run();
-            /*
+            //int x = int.Parse(Console.ReadLine());
+            //Console.WriteLine();
+            //PrintNumbers(x); //158 47 7426 //211 50 10550
+            //HideCursor();Console.ReadLine();
+
+            Console.Write("press 1 for game 1 or ");
+            Console.Write("press 2 for Conway's Game of Life: ");
+            int input = int.Parse(Console.ReadLine());
+
+            switch (input)
+            {
+                case 1:
+                    Game1();
+                    break;
+                case 2:
+                    Game2();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public static void Game1()
+        {
+            Game game = new Game();
+            game.Run();
+
             Thread thread1 = new Thread(game.Run);
             thread1.Start();
-            
+
             Thread.Sleep(1000);
             thread1.Join();
-            Console.WriteLine(" Press X to exit");*/
+            Console.WriteLine(" Press X to exit");
+        }
+
+        public static void Game2()
+        {
+            Conway.GameOfLife game = new Conway.GameOfLife();
+            game.Run();
+            ResetConsoleColor();
         }
 
         public static void SetConsoleColor(ConsoleColor background, ConsoleColor foreground)
