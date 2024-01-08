@@ -32,6 +32,24 @@ namespace Conway
             }
         }
 
+        public Board(int height, int width)
+        {
+            this.height = height;
+            this.width = width;
+
+            // initialize boardlist and oldboardlist with 0
+            for (int i = 0; i < height; i++)
+            {
+                List<int> row = new List<int>();
+                for (int j = 0; j < width; j++)
+                {
+                    row.Add(0);
+                }
+                boardlist.Add(row);
+                oldboardlist.Add(row);
+            }
+        }
+
         public void GenerateRandomBoard()
         {
             Random random = new Random();
@@ -66,12 +84,12 @@ namespace Conway
                     if (boardlist[i][j] == 0)
                     {
                         ConsoleGameMenu.Program.SetConsoleColor(ConsoleColor.Black, ConsoleColor.Black);
-                        Console.Write(boardlist[i][j]);
+                        Console.Write(" ");
                     }
                     else
                     {
                         ConsoleGameMenu.Program.SetConsoleColor(ConsoleColor.White, ConsoleColor.White);
-                        Console.Write(boardlist[i][j]);
+                        Console.Write(" ");
                     }
                 }
                 ConsoleGameMenu.Program.ResetConsoleColor();
@@ -175,7 +193,7 @@ namespace Conway
                     {
                         if (boardlist[i][j - 1] == 1)
                         { neighbours++; }
-                        if (boardlist[i - 1][i - 1] == 1)
+                        if (boardlist[i - 1][j - 1] == 1)
                         { neighbours++; }
                         if (boardlist[i - 1][j] == 1)
                         { neighbours++; }
@@ -275,13 +293,13 @@ namespace Conway
                         {
                             ConsoleGameMenu.Program.SetCursorPosition(j, i + 1);
                             ConsoleGameMenu.Program.SetConsoleColor(ConsoleColor.Black, ConsoleColor.Black);
-                            Console.Write(boardlist[i][j]);
+                            Console.Write(" ");
                         }
                         else
                         {
                             ConsoleGameMenu.Program.SetCursorPosition(j, i + 1);
                             ConsoleGameMenu.Program.SetConsoleColor(ConsoleColor.White, ConsoleColor.White);
-                            Console.Write(boardlist[i][j]);
+                            Console.Write(" ");
                         }
                         ConsoleGameMenu.Program.ResetConsoleColor();
                     }

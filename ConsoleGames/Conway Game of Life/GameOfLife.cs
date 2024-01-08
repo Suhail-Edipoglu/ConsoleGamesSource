@@ -14,7 +14,7 @@ namespace Conway
 
 		public void Run()
 		{
-            Board board = new Board();
+            Board board = new Board(50, 50);
 
 			board.GenerateRandomBoard();
             ConsoleGameMenu.Program.Clear();
@@ -24,7 +24,7 @@ namespace Conway
 
             do
 			{
-                Sleep(100);
+                //Sleep(100);
                 //ConsoleGameMenu.Program.Clear();
 				board.generation++;
                 board.UpdateBoard();
