@@ -9,7 +9,7 @@ namespace ConsoleGameMenu
     {
         static void Main(string[] args)
         {
-            Console.Title = "First Game";
+            Console.Title = "Conway's Game of Life";
             /*
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
             if (args == null || args.Length == 0)
@@ -30,13 +30,15 @@ namespace ConsoleGameMenu
             //PrintNumbers(x); //158 47 7426 //211 50 10550
             //HideCursor();Console.ReadLine();
 
-            Console.Write("press 1 for game 1 or ");
-            Console.Write("press 2 for Conway's Game of Life: ");
-            int input = int.Parse(Console.ReadLine());
+            //Console.Write("press 1 for game 1 or ");
+            //Console.Write("press 2 for Conway's Game of Life: ");
+            //int input = int.Parse(Console.ReadLine());
+            int input = 2;
 
             switch (input)
             {
                 case 1:
+                    Clear();
                     Game1();
                     break;
                 case 2:

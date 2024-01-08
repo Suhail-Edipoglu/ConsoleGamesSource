@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Conway
 {
 	public class GameOfLife
 	{
-		public GameOfLife()
+        public bool end = false;
+
+        public GameOfLife()
 		{
 		}
 
@@ -13,9 +17,24 @@ namespace Conway
             Board board = new Board();
 
 			board.GenerateRandomBoard();
-            Console.Clear();
+            ConsoleGameMenu.Program.Clear();
+            ConsoleGameMenu.Program.HideCursor();
             board.PrintBoard();
-			board.UpdateBoard();
+			Sleep(2000);
+
+            do
+			{
+                Sleep(100);
+                //ConsoleGameMenu.Program.Clear();
+				board.generation++;
+                board.UpdateBoard();
+				//board.PrintBoard();
+            } while (end != true);
+        }
+
+		public void Sleep(int millisecs)
+		{
+            System.Threading.Thread.Sleep(millisecs);
         }
 	}
 }
